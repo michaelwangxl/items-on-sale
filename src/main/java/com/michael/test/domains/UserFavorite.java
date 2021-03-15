@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 @Entity
 public class UserFavorite implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     private Integer favId;

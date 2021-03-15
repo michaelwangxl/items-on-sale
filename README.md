@@ -1,15 +1,16 @@
-#Test Assignment Demo 
-## items-on-sale
+##Test Assignment Demo 
+### items-on-sale
 
 Thanks for giving me this opportunity to demonstrate my coding with this assignment.
 
-1. This project was written in Spring Boot with Maven. Configurations for DB, Scheduling and Security are in *com.michael.test.config* package.
+1. This project was written in Java 8, Spring Boot with Maven. Configurations for DB, Scheduling and Security are in *com.michael.test.config* package.
 
 2. Data source is embedded H2 database. DB scritps are in /resources/testdb/
 
 3. For testing purpose, the authentication here is in-memory authentication.
+   * Users are user1, user2, admin; passwords are all password.
 
-4. Schedule has a thread pool size = 10.
+4. Scheduler has a thread pool size = 10.
 
 5. To implement the business logic, User, Product, UserFavorite, UserOrder tables are created.The Recommendation Object includes 3 parts: myOrders list, Wish List and Hot Deals.
    1. User: userId, userName, password.
@@ -22,6 +23,6 @@ Thanks for giving me this opportunity to demonstrate my coding with this assignm
 
 7. **Secure your service to only allow calls from the website domain "shopping.rbc.com"** is implemented in the ItemsOnSaleController.java with annotation "@CrossOrigin".
 
-8. **Consumers/Users should have valid credentials when calling the microservice or else they will get 403 forbidden error** is handled in ItemsOnSaleController with an Exception Class NoAccessException. The logic is, when the logged user can only call API with their own userId, otherwise, the API will respond 403 Error.
+8. **Consumers/Users should have valid credentials when calling the microservice or else they will get 403 forbidden error** is handled in ItemsOnSaleController with an Exception Class NoAccessException. The logic is, the logged user can only call the API with their own userId, otherwise, the API will respond 403 Error.
 
 9. API documentation is implemented with OpenAPI plugin, which can be visited at "http://localhost:8080/swagger-ui.html".
