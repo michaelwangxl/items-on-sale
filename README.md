@@ -25,5 +25,6 @@ Thanks for giving me this opportunity to demonstrate my coding with this assignm
 7. **Secure your service to only allow calls from the website domain "shopping.rbc.com"** is implemented in the ItemsOnSaleController.java with annotation "@CrossOrigin".
 
 8. **Consumers/Users should have valid credentials when calling the microservice or else they will get 403 forbidden error** is handled in ItemsOnSaleController with an Exception Class NoAccessException. The logic is, the logged user can only call the API with their own userId, otherwise, the API will respond 403 Error.
+   * e.g. user1's userId = 1, so user1 can only call /recommendations/1, other url will return 403 error.
 
 9. API documentation is implemented with OpenAPI plugin, which can be visited at "http://localhost:8080/swagger-ui.html".
