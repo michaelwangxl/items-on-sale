@@ -32,3 +32,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Backup of previous Maven configs
+.mvn_backup/
+
+# Gradle wrapper
+/gradle/
+/gradlew
+/gradlew.bat
