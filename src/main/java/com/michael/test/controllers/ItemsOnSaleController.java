@@ -40,7 +40,7 @@ public class ItemsOnSaleController {
      */
     @CrossOrigin(origins = "shopping.rbc.com")                                       //restrain the calling URL origin to shopping.rbc.com
     @GetMapping("/recommendations/{userId}")
-    public ModelandResponseEntity<Recommendation> getRecommendations(@PathVariable Integer userId, Authentication authentication){
+    public ResponseEntity<Recommendation> getRecommendations(@PathVariable Integer userId, Authentication authentication){
         User user = userService.findUserByUserId(userId);                            //get the User based on userId.
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();       //get current user.
         if(user!=null && userDetails.getUsername().equals(user.getUserName())){      //validate if the user is calling the correct api.

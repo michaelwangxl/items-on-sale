@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * @author michaelwang on 2021-03-14
  */
+@SuppressWarnings("unused")
 public class Recommendation  {
     private List<Product> myOrders;
     private List<Product> wishList;
@@ -48,7 +49,7 @@ public class Recommendation  {
         return "Recommendation{" +
                 "myOrders=" + myOrders +
                 ", wishList=" + wishList +
-                ", hotDeal=" + hotDeals +
+                ", hotDeals=" + hotDeals +
                 '}';
     }
 }
