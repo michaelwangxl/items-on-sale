@@ -10,7 +10,8 @@ version = '0.0.1-SNAPSHOT'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        // Use Java 17 for widest compatibility with Spring Boot 3.x and Gradle 8.x
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
@@ -35,7 +36,8 @@ tasks.withType(Test) {
 
 spotless {
     java {
-        googleJavaFormat('1.15.0')
+        // bumped to 1.17.0 to support newer JVMs (see Gradle runtime JVM error)
+        googleJavaFormat('1.17.0')
         target 'src/main/java/**/*.java', 'src/test/java/**/*.java'
     }
 }

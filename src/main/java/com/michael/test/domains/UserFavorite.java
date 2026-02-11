@@ -9,52 +9,53 @@ import java.io.Serializable;
  */
 @Entity
 public class UserFavorite implements Serializable {
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-    @Id
-    private Integer favId;
-    private Integer userId;
-    private Integer productId;
+  @Id private Integer favId;
+  private Integer userId;
+  private Integer productId;
 
-    public UserFavorite() {
-    }
+  public UserFavorite() {}
 
-    public UserFavorite(Integer favId, Integer userId, Integer productId) {
-        this.favId = favId;
-        this.userId = userId;
-        this.productId = productId;
-    }
+  public UserFavorite(Integer favId, Integer userId, Integer productId) {
+    this.favId = favId;
+    this.userId = userId;
+    this.productId = productId;
+  }
 
-    public Integer getFavId() {
-        return favId;
-    }
+  public Integer getFavId() {
+    return favId;
+  }
 
-    public void setFavId(Integer favId) {
-        this.favId = favId;
-    }
+  public void setFavId(Integer favId) {
+    this.favId = favId;
+  }
 
-    public Integer getUserId() {
-        return userId;
-    }
+  public Integer getUserId() {
+    return userId;
+  }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+  public void setUserId(Integer userId) {
+    this.userId = userId;
+  }
 
-    public Integer getProductId() {
-        return productId;
-    }
+  public Integer getProductId() {
+    return productId;
+  }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
+  public void setProductId(Integer productId) {
+    this.productId = productId;
+  }
 
-    @Override
-    public String toString() {
-        return "UserFavorite{" +
-                "favId=" + favId +
-                ", userId=" + userId +
-                ", productId=" + productId +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "UserFavorite{"
+        + "favId="
+        + favId
+        + ", userId="
+        + userId
+        + ", productId="
+        + productId
+        + '}';
+  }
 }
