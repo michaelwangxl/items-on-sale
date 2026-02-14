@@ -11,15 +11,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class ScheduledTasks {
 
-  private RecommendationService recommendationService;
+	private RecommendationService recommendationService;
 
-  @Autowired
-  public void setRecommendationService(RecommendationService recommendationService) {
-    this.recommendationService = recommendationService;
-  }
+	@Autowired
+	public void setRecommendationService(RecommendationService recommendationService) {
+		this.recommendationService = recommendationService;
+	}
 
-  @Scheduled(cron = "0 0 0 ? * *") // At 00:00:00am every day
-  public void changeOnSaleProducts() {
-    recommendationService.updateOnSaleProducts();
-  }
+	@Scheduled(cron = "0 0 0 ? * *") // At 00:00:00am every day
+	public void changeOnSaleProducts() {
+		recommendationService.updateOnSaleProducts();
+	}
 }

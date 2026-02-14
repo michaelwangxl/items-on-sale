@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '3.5.9'
+    id 'org.springframework.boot' version '3.5.10'
     id 'io.spring.dependency-management' version '1.1.0'
     id 'java'
     id 'com.diffplug.spotless' version '6.21.0'
@@ -28,6 +28,7 @@ dependencies {
     runtimeOnly 'org.hsqldb:hsqldb:2.6.1'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.withType(Test) {
@@ -36,10 +37,19 @@ tasks.withType(Test) {
 
 spotless {
     java {
-        // bumped to 1.17.0 to support newer JVMs (see Gradle runtime JVM error)
-        googleJavaFormat('1.17.0')
+        // Use eclipse formatter for better Java 21 compatibility
+        eclipse('4.32')
         target 'src/main/java/**/*.java', 'src/test/java/**/*.java'
     }
+}
+
+// Automatically apply spotless formatting before build and disable check task
+tasks.named('spotlessCheck').configure {
+    enabled = false
+}
+
+tasks.named('build').configure {
+    dependsOn spotlessApply
 }
 
 // Prevent publishing accidental artifacts

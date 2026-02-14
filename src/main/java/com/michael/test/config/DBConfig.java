@@ -20,25 +20,22 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 @EntityScan("com.michael.test.domains")
 @EnableJpaRepositories("com.michael.test.repository")
 public class DBConfig {
-  private Logger logger = Logger.getLogger(getClass().getName());
+	private Logger logger = Logger.getLogger(getClass().getName());
 
-  @Bean
-  public DataSource dataSource() {
-    logger.info("dataSource() invoked");
+	@Bean
+	public DataSource dataSource() {
+		logger.info("dataSource() invoked");
 
-    DataSource dataSource =
-        (new EmbeddedDatabaseBuilder())
-            .addScript("classpath:testdb/schema.sql")
-            .addScript("classpath:testdb/data.sql")
-            .build();
+		DataSource dataSource = (new EmbeddedDatabaseBuilder()).addScript("classpath:testdb/schema.sql")
+				.addScript("classpath:testdb/data.sql").build();
 
-    logger.info("dataSource = " + dataSource);
+		logger.info("dataSource = " + dataSource);
 
-    // Sanity check
-    JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-    List<Map<String, Object>> product = jdbcTemplate.queryForList("SELECT * FROM PRODUCT");
-    logger.info("System has " + product.size() + " products");
+		// Sanity check
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		List<Map<String, Object>> product = jdbcTemplate.queryForList("SELECT * FROM PRODUCT");
+		logger.info("System has " + product.size() + " products");
 
-    return dataSource;
-  }
+		return dataSource;
+	}
 }

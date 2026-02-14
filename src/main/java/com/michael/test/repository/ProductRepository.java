@@ -8,9 +8,9 @@ import org.springframework.data.repository.Repository;
  * @author michaelwang on 2021-03-11
  */
 public interface ProductRepository extends Repository<Product, Integer> {
-  Product findByProductId(Integer productId);
+	Product findByProductId(Integer productId);
 
-  List<Product> findAll();
+	List<Product> findAll();
 
-  void save(Product p);
+	void save(Product p);
 }

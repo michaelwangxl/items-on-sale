@@ -19,39 +19,28 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-  @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http.authorizeHttpRequests(
-            requests ->
-                requests.requestMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated())
-        .formLogin(form -> form.permitAll())
-        .httpBasic(Customizer.withDefaults());
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http.authorizeHttpRequests(
+				requests -> requests.requestMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated())
+				.formLogin(form -> form.permitAll()).httpBasic(Customizer.withDefaults());
 
-    return http.build();
-  }
+		return http.build();
+	}
 
-  @Bean
-  public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
-    UserDetails user1 =
-        User.withUsername("user1")
-            .password(passwordEncoder.encode("password"))
-            .roles("USER")
-            .build();
-    UserDetails user2 =
-        User.withUsername("user2")
-            .password(passwordEncoder.encode("password"))
-            .roles("USER")
-            .build();
-    UserDetails admin =
-        User.withUsername("admin")
-            .password(passwordEncoder.encode("password"))
-            .roles("ADMIN", "USER")
-            .build();
-    return new InMemoryUserDetailsManager(user1, user2, admin);
-  }
+	@Bean
+	public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
+		UserDetails user1 = User.withUsername("user1").password(passwordEncoder.encode("password")).roles("USER")
+				.build();
+		UserDetails user2 = User.withUsername("user2").password(passwordEncoder.encode("password")).roles("USER")
+				.build();
+		UserDetails admin = User.withUsername("admin").password(passwordEncoder.encode("password"))
+				.roles("ADMIN", "USER").build();
+		return new InMemoryUserDetailsManager(user1, user2, admin);
+	}
 
-  @Bean
-  public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }
